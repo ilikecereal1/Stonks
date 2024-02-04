@@ -18,16 +18,17 @@
     <div id="content">
       <div id="animation"></div>
       <h1 id="title" data-value="stonk market">stonk market</h1>
-      <p id="price">price: 1$/stock</p>
-      <canvas
-        id="canvas"
-        style="border: 1px solid grey"
-      ></canvas>
-      <button onclick="buy()">Buy</button>
-      <button onclick="sell()" id="sell">Sell</button>
+      <p id="price">null</p>
+      <canvas id="canvas"></canvas>
+      <div style="padding-left: 25%; float: left">
+        <button onclick="buy()">Buy</button>
+      </div>
+      <div style="padding-right: 25%; float: right">
+        <button onclick="sell()" id="sell">Sell</button>
+      </div>
     </div>
-    <script src="./script.js"></script>
-    <script src="./mouse.js"></script>
+    <script src="./stonks.js"></script>
+    <script src="./style.js"></script>
     <script src="https://kit.fontawesome.com/1ee8f271b9.js"></script>
   </body>
 </html>

@@ -1,35 +1,13 @@
-/* -- Text effect -- */
+var priceText = document.querySelector("#price");
+var historicalPrice = [];
+var players = [
+  { stocks: 0, offers: [{ type: "sell", stocks: 200, price: 10 }] },
+  { stocks: 200, offers: [] },
+  { stocks: 200, offers: [] },
+  { stocks: 200, offers: [] },
+  { stocks: 200, offers: [] },
+];
 
-const letters = "abcdefghijklmnopqrstuvwxyz";
-
-let interval = null;
-
-document.querySelector("#title").onmouseover = (event) => {
-  let iteration = 0;
-
-  clearInterval(interval);
-
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if (index < iteration) {
-          return event.target.dataset.value[index];
-        }
-
-        return letters[Math.floor(Math.random() * 26)];
-      })
-      .join("");
-
-    if (iteration >= event.target.dataset.value.length) {
-      clearInterval(interval);
-    }
-
-    iteration += 1 / 3;
-  }, 30);
-};
-
-const price = document.querySelector("#price");
 
 function isNumeric(str) {
   if (typeof str != "string") return false; // we only process strings!
@@ -47,6 +25,14 @@ function buy() {
   }
 }
 
+function sell() {
+  var buy = prompt("How much to sell?");
+  if (isNumeric(sell)) {
+  } else {
+    alert("That isn't a valid number.");
+  }
+}
+
 var canvas = document.getElementById("canvas");
 console.log(canvas);
 var ctx = canvas.getContext("2d");
@@ -57,6 +43,17 @@ function sleep(ms) {
 
 setInterval(drawCanvas, 1000);
 window.addEventListener("resize", drawCanvas);
+
+function player(players) {
+  for (let i = 0; i < players.length; i++) {
+    if (players[i].offers[0]) {
+      if (players[i].offers[0]["type"] == "sell") {
+        priceText.innerText =
+          "Price: $" + players[i].offers[0]["price"] + "/stock";
+      }
+    }
+  }
+}
 
 function drawCanvas() {
   // Set display size (css pixels).
@@ -84,8 +81,8 @@ function drawCanvas() {
   var x = size / 2;
   var y = 300 / 2;
 
-  var textString = "hehe";
-  ctx.fillText(textString, x, y);
+  var textString = "0";
+  ctx.fillText(textString, 10, y);
 }
 
 drawCanvas();
