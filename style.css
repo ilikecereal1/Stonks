@@ -58,14 +58,14 @@ body {
 
 #title {
   text-align: center;
-  font-size: clamp(2rem, 6vw, 6rem);
+  font-size: clamp(2rem, 6vh, 6rem);
   color: white;
   white-space: nowrap;
 }
 
 #price {
   text-align: center;
-  font-size: clamp(1rem, 3vw, 3rem);
+  font-size: clamp(1rem, 3vh, 3rem);
   color: white;
   white-space: nowrap;
 }
@@ -73,7 +73,7 @@ body {
 button {
   cursor: pointer;
   font-family: "Space Mono", monospace;
-  font-size: clamp(1rem, 3vw, 3rem);
+  font-size: clamp(1rem, 3vh, 3rem);
   color: white;
   white-space: nowrap;
   background-color: transparent;
@@ -90,6 +90,7 @@ canvas {
   white-space: nowrap;
   translate: 50%;
   display: block;
+  border: solid;
 }
 
 #content {
