@@ -1,0 +1,185 @@
+:root {
+  --glow-rgb: 147 112 216;
+}
+
+body {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  margin: 0rem;
+  overflow: hidden;
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50% {
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes title {
+  0% {
+    height: 20%;
+  }
+
+  100% {
+    height: 0%;
+  }
+}
+
+#blob {
+  background-color: white;
+  height: 34vmax;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: linear-gradient(to right, aquamarine, mediumpurple);
+  animation: rotate 20s infinite;
+  opacity: 0.8;
+}
+
+#blur {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  backdrop-filter: blur(12vmax);
+}
+
+#title {
+  text-align: center;
+  font-size: 12;
+  color: white;
+  white-space: nowrap;
+}
+
+#price {
+  text-align: center;
+  font-size: 6;
+  color: white;
+  white-space: nowrap;
+}
+
+button {
+  cursor: pointer;
+  font-family: "Space Mono", monospace;
+  font-size: 20;
+  color: white;
+  white-space: nowrap;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+canvas {
+  white-space: nowrap;
+  translate: 50%;
+  display: block;
+}
+
+#content {
+  font-family: "Space Mono", monospace;
+  z-index: 5;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#sell {
+  text-align: right;
+}
+
+#animation {
+  width: 100%;
+  animation-name: title;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+/* trail */
+.glow-point {
+  position: absolute;
+  box-shadow: 0rem 0rem 1.2rem 0.6rem rgb(var(--glow-rgb));
+  pointer-events: none;
+  z-index: 3;
+}
+
+.star {
+  position: absolute;
+  z-index: 4;
+  color: white;
+  font-size: 1rem;
+  animation-duration: 1500ms;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+}
+
+@keyframes fall-1 {
+  0% {
+    transform: translate(0px, 0px) rotateX(45deg) rotateY(30deg) rotateZ(0deg)
+      scale(0.25);
+    opacity: 0;
+  }
+
+  5% {
+    transform: translate(10px, -10px) rotateX(45deg) rotateY(30deg)
+      rotateZ(0deg) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(25px, 200px) rotateX(180deg) rotateY(270deg)
+      rotateZ(90deg) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes fall-2 {
+  0% {
+    transform: translate(0px, 0px) rotateX(-20deg) rotateY(10deg) scale(0.25);
+    opacity: 0;
+  }
+
+  10% {
+    transform: translate(-10px, -5px) rotateX(-20deg) rotateY(10deg) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-10px, 160px) rotateX(-90deg) rotateY(45deg)
+      scale(0.25);
+    opacity: 0;
+  }
+}
+
+@keyframes fall-3 {
+  0% {
+    transform: translate(0px, 0px) rotateX(0deg) rotateY(45deg) scale(0.5);
+    opacity: 0;
+  }
+
+  15% {
+    transform: translate(7px, 5px) rotateX(0deg) rotateY(45deg) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(20px, 120px) rotateX(-180deg) rotateY(-90deg)
+      scale(0.5);
+    opacity: 0;
+  }
+}

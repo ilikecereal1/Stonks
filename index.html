@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stonks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div id="blob"></div>
+    <div id="blur"></div>
+    <div id="content">
+      <div id="animation"></div>
+      <h1 id="title" data-value="stonk market">stonk market</h1>
+      <p id="price">price: 1$/stock</p>
+      <canvas
+        id="canvas"
+        style="border: 1px solid grey"
+      ></canvas>
+      <button onclick="buy()">Buy</button>
+      <button onclick="sell()" id="sell">Sell</button>
+    </div>
+    <script src="./script.js"></script>
+    <script src="./mouse.js"></script>
+    <script src="https://kit.fontawesome.com/1ee8f271b9.js"></script>
+  </body>
+</html>
