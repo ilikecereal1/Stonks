@@ -59,7 +59,7 @@ function player(players) {
           players[i].offers.shift();
         } else {
           priceText.innerText =
-            "Sell: $" + players[i].offers[0]["price"] + "/stock";
+            "sell: $" + players[i].offers[0]["price"] + "/stock";
           historicalPrice.push(players[i].offers[0]["price"]);
           if (historicalPrice.length > 100) {
             historicalPrice.shift();
