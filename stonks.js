@@ -23,7 +23,8 @@ function isNumeric(str) {
 
 function buy() {
   var buy = prompt("How much to buy?");
-  if (isNumeric()) {
+  console.log(typeof buy);
+  if (isNumeric(buy)) {
   } else {
     alert("That isn't a valid number.");
   }
