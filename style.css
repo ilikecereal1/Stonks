@@ -56,16 +56,28 @@ body {
   backdrop-filter: blur(12vmax);
 }
 
+#time {
+  font-size: clamp(1rem, 2vmin, 2rem);
+  color: white;
+  white-space: nowrap;
+}
+
+#money {
+  font-size: clamp(1rem, 2vmin, 2rem);
+  color: white;
+  white-space: nowrap;
+}
+
 #title {
   text-align: center;
-  font-size: clamp(2rem, 6vh, 6rem);
+  font-size: clamp(2rem, 6vmin, 6rem);
   color: white;
   white-space: nowrap;
 }
 
 #price {
   text-align: center;
-  font-size: clamp(1rem, 3vh, 3rem);
+  font-size: clamp(1rem, 3vmin, 3rem);
   color: white;
   white-space: nowrap;
 }
@@ -73,7 +85,7 @@ body {
 button {
   cursor: pointer;
   font-family: "Space Mono", monospace;
-  font-size: clamp(1rem, 3vh, 3rem);
+  font-size: clamp(1rem, 3vmin, 3rem);
   color: white;
   white-space: nowrap;
   background-color: transparent;
@@ -88,9 +100,9 @@ button:hover {
 
 canvas {
   white-space: nowrap;
-  translate: 50%;
+  translate: 10%;
   display: block;
-  border: solid;
+  border: transparent;
 }
 
 #content {
@@ -184,4 +196,8 @@ canvas {
       scale(0.5);
     opacity: 0;
   }
+}
+
+#game {
+  display: none;
 }
