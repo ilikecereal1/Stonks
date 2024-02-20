@@ -3,18 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <title>Stonks</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Rubik:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
     <div id="blob"></div>
     <div id="blur"></div>
+    <div id="endBlur"></div>
     <div id="content">
       <div style="left: 10%; float: left; position: absolute">
         <p id="time">300</p>
@@ -31,6 +26,36 @@
         >
           start
         </button>
+        <button
+          style="margin-left: auto; margin-right: auto; display: block"
+          onclick="year = 0;"
+        >
+          year 1
+        </button>
+        <button
+          style="margin-left: auto; margin-right: auto; display: block"
+          onclick="year = 1;"
+        >
+          year 2
+        </button>
+        <button
+          style="margin-left: auto; margin-right: auto; display: block"
+          onclick="year = 2;"
+        >
+          year 3
+        </button>
+        <button
+          style="margin-left: auto; margin-right: auto; display: block"
+          onclick="year = 3;"
+        >
+          year 4
+        </button>
+        <button
+          style="margin-left: auto; margin-right: auto; display: block"
+          onclick="year = 4;"
+        >
+          year 5
+        </button>
       </div>
       <canvas id="canvas"></canvas>
       <div id="game">
@@ -44,9 +69,16 @@
         </div>
       </div>
     </div>
-    <div id="end"></div>
+    <div id="end">
+      <div style="  display: flex;
+">
+      <p id="endText">
+        You made $0. You got an extra $0 after company profits, and other
+        things. Grand total: $0
+      </p>
+      </div>
+    </div>
     <script src="./stonks.js"></script>
-    <script src="./style.js"></script> 
-    <script src="https://kit.fontawesome.com/1ee8f271b9.js"></script>
+    <script src="./style.js"></script>
   </body>
 </html>
