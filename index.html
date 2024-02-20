@@ -16,29 +16,37 @@
     <div id="blob"></div>
     <div id="blur"></div>
     <div id="content">
-      <div style="left: 10%; float: left; position: absolute;"><p id="time">300</p></div>
-      <div style="right: 10%; float: right; position: absolute;">
+      <div style="left: 10%; float: left; position: absolute">
+        <p id="time">300</p>
+      </div>
+      <div style="right: 10%; float: right; position: absolute">
         <p id="money">$1000</p>
       </div>
+      <div id="animation"></div>
+      <h1 id="title" data-value="stonk market">stonk market</h1>
       <div id="menu">
-        <div id="animation"></div>
-        <h1 id="title" data-value="stonk market">stonk market</h1>
-        <canvas id="canvas"></canvas>
+        <button
+          style="margin-left: auto; margin-right: auto; display: block"
+          onclick="play()"
+        >
+          start
+        </button>
       </div>
+      <canvas id="canvas"></canvas>
       <div id="game">
-
-        <p id="price">sell: null</p>
+        <p id="buyPrice">buy: null</p>
+        <p id="sellPrice">sell: null</p>
         <div style="padding-left: 10%; float: left">
-          <button onclick="buy()">buy</button>
+          <button onclick="buyStock();">buy</button>
         </div>
         <div style="padding-right: 10%; float: right">
-          <button onclick="sell()" id="sell">sell</button>
+          <button onclick="sellStock();" id="sell">sell</button>
         </div>
-
       </div>
     </div>
+    <div id="end"></div>
     <script src="./stonks.js"></script>
-    <script src="./style.js"></script>
+    <script src="./style.js"></script> 
     <script src="https://kit.fontawesome.com/1ee8f271b9.js"></script>
   </body>
 </html>

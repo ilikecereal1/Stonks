@@ -34,6 +34,26 @@ body {
   }
 }
 
+@keyframes start {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes start2 {
+  0% {
+    opacity: 100%;
+    height: clamp(1rem, 3vmin, 3rem);
+  }
+  100% {
+    opacity: 0%;
+    height: 0%;
+  }
+}
+
 #blob {
   background-color: white;
   height: 34vmax;
@@ -75,7 +95,14 @@ body {
   white-space: nowrap;
 }
 
-#price {
+#sellPrice {
+  text-align: center;
+  font-size: clamp(1rem, 3vmin, 3rem);
+  color: white;
+  white-space: nowrap;
+}
+
+#buyPrice {
   text-align: center;
   font-size: clamp(1rem, 3vmin, 3rem);
   color: white;
@@ -91,7 +118,6 @@ button {
   background-color: transparent;
   padding: 0;
   border: none;
-
 }
 
 button:hover {
@@ -200,4 +226,18 @@ canvas {
 
 #game {
   display: none;
+  animation-fill-mode: forwards;
+}
+
+#game.started {
+  display: inline;
+  animation: start 2s;
+}
+
+#menu {
+  animation-fill-mode: forwards;
+}
+
+#menu.started {
+  animation: start2 2s;
 }
