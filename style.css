@@ -54,6 +54,15 @@ body {
   }
 }
 
+@keyframes titleMinimize {
+  0% {
+    font-size: clamp(2rem, 6vmin, 6rem);
+  }
+  100% {
+    font-size: clamp(1rem, 2vmin, 2rem);
+  }
+}
+
 #blob {
   background-color: white;
   height: 34vmax;
@@ -93,6 +102,7 @@ body {
   font-size: clamp(2rem, 6vmin, 6rem);
   color: white;
   white-space: nowrap;
+  animation-fill-mode: forwards;
 }
 
 #sellPrice {
@@ -234,10 +244,11 @@ canvas {
   animation: start 2s;
 }
 
-#menu {
+#menu.started {
   animation-fill-mode: forwards;
+  animation: start2 2s;
 }
 
-#menu.started {
-  animation: start2 2s;
+#title.started {
+  animation: titleMinimize 2s forwards;
 }

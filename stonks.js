@@ -13,7 +13,7 @@ var buy = 10;
 var stocks = 0;
 
 let companyStatusArray = [
-  { effect: -5, reason: "High operating costs and low revenue" },
+  { effect: -7, reason: "High operating costs and low revenue" },
   { effect: -4, reason: "Market competition and decreasing customer base" },
   { effect: -3, reason: "Economic downturn affecting sales" },
   { effect: -2, reason: "Poor marketing strategy and brand image" },
@@ -23,7 +23,7 @@ let companyStatusArray = [
   { effect: 2, reason: "Successful product launches" },
   { effect: 3, reason: "Effective cost-cutting measures" },
   { effect: 4, reason: "Growing market share" },
-  { effect: 5, reason: "Strong financial performance and high profitability" },
+  { effect: 9, reason: "Strong financial performance and high profitability" },
 ]; // i love chatgpt
 
 function isNumeric(str) {
@@ -119,43 +119,52 @@ var mainLoop = setInterval(function () {
   updateGraph();
   reduceTime(time);
   if (started) {
-      sellPriceText.innerText = "sell: $" + sell + "/stock";
-  buyPriceText.innerText = "buy: $" + buy + "/stock";
-  moneyText.innerText = "$" + money;
-  if (parseFloat(time.innerText) <= 0) {
-    end();
+    sellPriceText.innerText = "sell: $" + sell + "/stock";
+    buyPriceText.innerText = "buy: $" + buy + "/stock";
+    moneyText.innerText = "$" + money;
+    if (parseFloat(time.innerText) <= 0) {
+      end();
+    }
+    if (Math.round(parseFloat(time.innerText)) == parseFloat(time.innerText)) {
+      sell =
+        Math.round(
+          (sell +
+            companyStatusArray[Math.round(Math.random() * 10)]["effect"] / 10) *
+            10
+        ) / 10;
+      buy = Math.round((sell - Math.random() / 5) * 10) / 10;
+    }
   }
-  if (Math.round(parseFloat(time.innerText)) == parseFloat(time.innerText)) {
-    sell =
-      Math.round(
-        (sell +
-          companyStatusArray[Math.round(Math.random() * 10)]["effect"] / 10) *
-          10
-      ) / 10;
-    buy = Math.round((sell - Math.random() / 5) * 10) / 10;
-  }
-  }
-
 }, updateDelay);
 
 function play() {
   started = true;
   document.getElementById("game").classList.add("started");
   document.getElementById("menu").classList.add("started");
+  document.getElementById("title").classList.add("started");
   var removeMenu = setTimeout(function () {
     document.getElementById("menu").remove();
   }, 2000);
 }
 
 function end() {
+  clearTimeout(mainLoop);
   document.getElementById("blur").style.zIndex = 6;
 }
 
 function buyStock() {
   var buyAmount = prompt("How many stocks to buy?");
+  if (buyAmount == null) {
+    return;
+  }
   if (isNumeric(buyAmount)) {
-    stocks += buyAmount;
-    money = -buyAmount * buy;
+    if (buyAmount * buy <= money) {
+      stocks += Number(buyAmount);
+      money -= buyAmount * buy;
+      sell += buyAmount / 500;
+    } else {
+      alert("Not enough money!");
+    }
   } else {
     alert("That isn't a valid number.");
   }
@@ -163,9 +172,19 @@ function buyStock() {
 
 function sellStock() {
   var sellAmount = prompt("How many stocks to sell?");
+  if (sellAmount == null) {
+    return;
+  }
   if (isNumeric(sellAmount)) {
-    money += sellAmount * sell;
-    stocks = -sellAmount;
+    console.log(sellAmount);
+    console.log(stocks);
+    if (sellAmount <= stocks) {
+      money += sellAmount * sell;
+      stocks -= Number(sellAmount);
+      buy -= sellAmount / 1000;
+    } else {
+      alert("You cannot sell more stocks than you have.");
+    }
   } else {
     alert("That isn't a valid number.");
   }
