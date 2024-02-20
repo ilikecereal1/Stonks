@@ -195,10 +195,9 @@ function updateGraph() {
 }
 
 function drawCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // Styling (adjust if desired)
-  var size = (window.innerWidth / 5) * 4;
+  var size = (window.innerWidth / 5) * 4.25;
   canvas.style.width = size + "px";
   canvas.style.height = 300 + "px";
   var scale = window.devicePixelRatio;
@@ -210,6 +209,8 @@ function drawCanvas() {
   ctx.textBaseline = "middle";
   ctx.strokeStyle = "#ff0000";
   ctx.lineWidth = scale;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // Graph Calculation
   let top = historicalPrice[0];
@@ -223,11 +224,11 @@ function drawCanvas() {
   // Line Drawing (Bezier Curve)
 
   for (let i = 1; i < historicalPrice.length; i++) {
-    let startX = (size / (historicalPrice.length - 1)) * (i - 1);
+    let startX = (size / (historicalPrice.length - 1)) * (i - 1) * scale;
     let startY =
       canvas.height -
-      ((historicalPrice[i - 1] - bottom) / range) * canvas.height;
-    let endX = (size / (historicalPrice.length - 1)) * i;
+      ((historicalPrice[i - 1] - bottom) / range) * canvas.height * scale;
+    let endX = (size / (historicalPrice.length - 1)) * i * scale;
     let endY =
       canvas.height - ((historicalPrice[i] - bottom) / range) * canvas.height;
 
