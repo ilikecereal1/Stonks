@@ -10,78 +10,6 @@ body {
   overflow: hidden;
 }
 
-@keyframes rotate {
-  from {
-    rotate: 0deg;
-  }
-
-  50% {
-    scale: 1 1.5;
-  }
-
-  to {
-    rotate: 360deg;
-  }
-}
-
-@keyframes title {
-  0% {
-    height: 20%;
-  }
-
-  100% {
-    height: 0%;
-  }
-}
-
-@keyframes start {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-
-@keyframes start2 {
-  0% {
-    opacity: 100%;
-    height: clamp(1rem, 3vmin, 3rem);
-  }
-  100% {
-    opacity: 0%;
-    height: 0%;
-  }
-}
-
-@keyframes titleMinimize {
-  0% {
-    font-size: clamp(2rem, 6vmin, 6rem);
-  }
-  100% {
-    font-size: clamp(1rem, 2vmin, 2rem);
-    white-space: nowrap;
-  }
-}
-
-@keyframes endBlur {
-  0% {
-    backdrop-filter: blur(0);
-  }
-  100% {
-    backdrop-filter: blur(12px);
-  }
-}
-
-@keyframes endText {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-
 #blob {
   background-color: white;
   height: 34vmax;
@@ -150,7 +78,6 @@ button {
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 3vmin, 3rem);
   color: white;
-  white-space: nowrap;
   background-color: transparent;
   padding: 0;
   border: none;
@@ -184,6 +111,81 @@ canvas {
   animation-name: title;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+}
+
+#game {
+  display: none;
+  animation-fill-mode: forwards;
+}
+
+#game.started {
+  display: inline;
+  animation: start 2s;
+}
+
+#menu.started {
+  animation-fill-mode: forwards;
+  animation: started 2s;
+}
+
+#title.started {
+  animation: titleMinimize 2s forwards;
+}
+
+#endBlur {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  margin: auto;
+}
+
+#endBlur.ended {
+  animation: endBlur 2s forwards;
+}
+
+#endText {
+  margin: auto;
+  position: none;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 3vmin, 3rem);
+  color: white;
+  text-align: center;
+}
+
+#endText.ended {
+  position: initial;
+  width: 50%;
+  transform: translate(0, 50%);
+  z-index: 7;
+  animation: endText 2s forwards;
+}
+
+#menuButton {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  opacity: 80%;
+  transition: opacity 0.2s ease;
+}
+
+#menuButton:hover {
+  opacity: 100%;
+}
+
+#sourceCode {
+  opacity: 20%;
+  width: clamp(4rem, 16vmin, 16rem);
+  font-size: clamp(1rem, 2vmin, 2rem);
+  text-align: right;
+  transition: opacity 0.2s ease;
+}
+
+#sourceCode:hover {
+  opacity: 80%;
+}
+
+#sourceCode.started {
+  display: none;
 }
 
 /* trail */
@@ -260,49 +262,75 @@ canvas {
   }
 }
 
-#game {
-  display: none;
-  animation-fill-mode: forwards;
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50% {
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
+  }
 }
 
-#game.started {
-  display: inline;
-  animation: start 2s;
+@keyframes title {
+  0% {
+    height: 20%;
+  }
+
+  100% {
+    height: 1%;
+  }
 }
 
-#menu.started {
-  animation-fill-mode: forwards;
-  animation: start2 2s;
+@keyframes start {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
-#title.started {
-  animation: titleMinimize 2s forwards;
+@keyframes started {
+  0% {
+    opacity: 80%;
+    height: clamp(1rem, 3vmin, 3rem);
+  }
+  100% {
+    opacity: 0%;
+    height: 0%;
+  }
 }
 
-#endBlur {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  margin: auto;
+@keyframes titleMinimize {
+  0% {
+    font-size: clamp(2rem, 6vmin, 6rem);
+  }
+  100% {
+    font-size: clamp(1rem, 2vmin, 2rem);
+    white-space: nowrap;
+  }
 }
 
-#endBlur.ended {
-  animation: endBlur 2s forwards;
+@keyframes endBlur {
+  0% {
+    backdrop-filter: blur(0);
+  }
+  100% {
+    backdrop-filter: blur(12px);
+  }
 }
 
-#endText {
-  margin: auto;
-  position: none;
-  font-family: "Space Mono", monospace;
-  font-size: clamp(1rem, 3vmin, 3rem);
-  color: white;
-  text-align: center;
-}
-
-#endText.ended {
-  position: initial;
-  width: 50%;
-  transform: translate(0, 50%);
-  z-index: 7;
-  animation: endText 2s forwards;
+@keyframes endText {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }

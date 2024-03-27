@@ -150,7 +150,8 @@ function play() {
   document.getElementById("game").classList.add("started");
   document.getElementById("menu").classList.add("started");
   document.getElementById("title").classList.add("started");
-  var removeMenu = setTimeout(function () {
+  document.getElementById("sourceCode").classList.add("started");
+  setTimeout(function () {
     document.getElementById("menu").remove();
   }, 2000);
 }

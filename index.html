@@ -23,46 +23,23 @@
       <div style="right: 10%; float: right; position: absolute">
         <p id="money">$10000</p>
       </div>
-        <p id="stocks">0 stocks</p>
+      <div style="bottom: 2%; right: 2%; float: right; position: absolute">
+        <button id="sourceCode"
+          onclick="location.href = 'https://github.com/ilikecereal1/Stonks';"
+        >
+          Open source on GitHub
+        </button>
+      </div>
+      <p id="stocks">0 stocks</p>
       <div id="animation"></div>
       <h1 id="title" data-value="stonk market">stonk market</h1>
       <div id="menu">
-        <button
-          style="margin-left: auto; margin-right: auto; display: block"
-          onclick="play()"
-        >
-          start
-        </button>
-        <button
-          style="margin-left: auto; margin-right: auto; display: block"
-          onclick="year = 0;"
-        >
-          year 1
-        </button>
-        <button
-          style="margin-left: auto; margin-right: auto; display: block"
-          onclick="year = 1;"
-        >
-          year 2
-        </button>
-        <button
-          style="margin-left: auto; margin-right: auto; display: block"
-          onclick="year = 2;"
-        >
-          year 3
-        </button>
-        <button
-          style="margin-left: auto; margin-right: auto; display: block"
-          onclick="year = 3;"
-        >
-          year 4
-        </button>
-        <button
-          style="margin-left: auto; margin-right: auto; display: block"
-          onclick="year = 4;"
-        >
-          year 5
-        </button>
+        <button id="menuButton" onclick="play()">start</button>
+        <button id="menuButton" onclick="year = 0;">year 1</button>
+        <button id="menuButton" onclick="year = 1;">year 2</button>
+        <button id="menuButton" onclick="year = 2;">year 3</button>
+        <button id="menuButton" onclick="year = 3;">year 4</button>
+        <button id="menuButton" onclick="year = 4;">year 5</button>
       </div>
       <canvas id="canvas"></canvas>
       <div id="game">
@@ -77,12 +54,11 @@
       </div>
     </div>
     <div id="end">
-      <div style="  display: flex;
-">
-      <p id="endText">
-        You made $0. You got an extra $0 after company profits, and other
-        things. Grand total: $0
-      </p>
+      <div style="display: flex">
+        <p id="endText">
+          You made $0. You got an extra $0 after company profits, and other
+          things. Grand total: $0
+        </p>
       </div>
     </div>
     <script src="./stonks.js"></script>
