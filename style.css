@@ -29,6 +29,7 @@ body {
   width: 100%;
   position: absolute;
   z-index: 2;
+  -webkit-backdrop-filter: blur(5px); /* fixes blur for Safari */
   backdrop-filter: blur(12vmax);
 }
 
@@ -319,9 +320,11 @@ canvas {
 
 @keyframes endBlur {
   0% {
+    -webkit-backdrop-filter: blur(0); /* fixes blur for Safari */
     backdrop-filter: blur(0);
   }
   100% {
+    -webkit-backdrop-filter: blur(12px); /* fixes blur for Safari */
     backdrop-filter: blur(12px);
   }
 }
