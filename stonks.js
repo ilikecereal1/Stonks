@@ -73,7 +73,6 @@ function updateGraph() {
 }
 
 function drawCanvas() {
-
   // Styling (adjust if desired)
   var size = (window.innerWidth / 5) * 4.25;
   canvas.style.width = size + "px";
@@ -100,8 +99,22 @@ function drawCanvas() {
   let range = top - bottom;
 
   // Line Drawing (Bezier Curve)
-
   for (let i = 1; i < historicalPrice.length; i++) {
+    ctx.beginPath(); // Start a new path
+    ctx.moveTo(
+      (size / (historicalPrice.length - 1)) * (i - 1),
+      canvas.height -
+        ((historicalPrice[i - 1] - bottom) / (range == 0 ? 1 : range)) *
+          canvas.height
+    ); // Move the pen to (30, 50)
+    ctx.lineTo(
+      (size / (historicalPrice.length - 1)) * i,
+      canvas.height -
+        ((historicalPrice[i] - bottom) / (range == 0 ? 1 : range)) *
+          canvas.height
+    ); // Draw a line to (150, 100)
+    ctx.stroke(); // Render the path
+    /*
     let startX = (size / (historicalPrice.length - 1)) * (i - 1) * scale;
     let startY =
       canvas.height -
@@ -116,6 +129,7 @@ function drawCanvas() {
     ctx.moveTo(startX, startY);
     ctx.quadraticCurveTo(midX, midY, endX, endY);
     ctx.stroke();
+    */ // old broken code
   }
   var textString = Math.round(((top + bottom) / 2) * 10) / 10;
   ctx.fillText(textString, 50 * scale, canvas.height / 2);
@@ -128,7 +142,7 @@ var mainLoop = setInterval(function () {
     reduceTime(time);
     sellPriceText.innerText = "sell: $" + sell + "/stock";
     buyPriceText.innerText = "buy: $" + buy + "/stock";
-    stockText.innerText = stocks + " stocks"
+    stockText.innerText = stocks + " stocks";
     moneyText.innerText = "$" + money;
     if (parseFloat(time.innerText) <= 0 || transactions >= 10) {
       end();
@@ -159,17 +173,18 @@ function play() {
 function end() {
   endBlur.style.zIndex = 6;
   endBlur.classList.add("ended");
+  money -= 10000;
   if (Math.round(Math.random()) == 0) {
     extra = (money - money * (Math.random() / 5 + 0.8)) * -1;
   } else {
     extra = (money - money * (Math.random() / 2 + 1)) * -1;
   }
-  endText.innerText = `You ${
+  endText.innerText = `You made $${money}. You ${
     extra > 0
       ? `got an extra $${extra} after company profits.`
-      : `lost $${extra} after taxes`
-  }\n Grand total: ${money + extra}`;
-  endText.classList.add("ended")
+      : `lost $${-extra} after taxes`
+  }\n Grand total: $${money + extra}`;
+  endText.classList.add("ended");
   clearTimeout(mainLoop);
 }
 
@@ -205,7 +220,7 @@ function sellStock() {
       money += sellAmount * sell;
       stocks -= Number(sellAmount);
       buy -= sellAmount / 1000;
-      
+
       transactions += 1;
     } else {
       alert("You cannot sell more stocks than you have.");
