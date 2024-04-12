@@ -145,6 +145,7 @@ canvas {
 }
 
 #endText {
+  display: none;
   margin: auto;
   position: none;
   font-family: "Space Mono", monospace;
@@ -154,6 +155,7 @@ canvas {
 }
 
 #endText.ended {
+  display: inline;
   position: initial;
   width: 50%;
   transform: translate(0, 50%);
